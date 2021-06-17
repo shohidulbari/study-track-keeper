@@ -1,3 +1,4 @@
+require('dotenv').config();
 const http = require('http');
 import 'reflect-metadata';
 import {createConnection} from 'typeorm';
