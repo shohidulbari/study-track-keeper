@@ -4,6 +4,7 @@ import 'reflect-metadata';
 import {createConnection} from 'typeorm';
 import User from './src/entities/User';
 import app from './src/app';
+import Subject from './src/entities/Subject';
 
 const server = http.createServer(app);
 
@@ -16,7 +17,7 @@ const server = http.createServer(app);
       username: 'stkdev',
       password: 'stkdev',
       database: 'stkdb',
-      entities: [User],
+      entities: [User, Subject],
       synchronize: true,
       logging: false,
     });

@@ -1,7 +1,7 @@
 import {getRepository} from 'typeorm';
 import User from '../entities/User';
 import bcrypt from 'bcrypt';
-import jwtSignToken from './helper/jwt';
+import {jwtSignToken} from './helper/jwt';
 
 const login = async (req, res, next) => {
   const user = await getRepository(User).findOneOrFail({

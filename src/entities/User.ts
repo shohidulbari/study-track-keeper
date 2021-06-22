@@ -1,5 +1,6 @@
 /* eslint-disable new-cap */
-import {Entity, Column, PrimaryGeneratedColumn} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, OneToMany} from 'typeorm';
+import Subject from './Subject';
 
 @Entity()
 // eslint-disable-next-line require-jsdoc
@@ -17,4 +18,7 @@ export default class User {
 
   @Column()
   password: string;
+
+  @OneToMany(() => Subject, (subject) => subject.user)
+  subjects: Subject[];
 };
