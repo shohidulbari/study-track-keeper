@@ -1,4 +1,5 @@
 const Joi = require('joi');
+const createError = require('http-errors');
 
 const schema = Joi.object({
   name: Joi.string().required(),
@@ -12,8 +13,8 @@ const signUpValidator = async (req, res, next) => {
     await schema.validateAsync(req.body);
     return next();
   } catch (err) {
-    console.log('Error Found in Data format!!... Request canceled');
-    return next(err);
+    // eslint-disable-next-line new-cap
+    return next(createError.BadRequest(err.message));
   }
 };
 

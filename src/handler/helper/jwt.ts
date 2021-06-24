@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const createError = require('http-errors');
 
 // eslint-disable-next-line no-unused-vars
 export const jwtSignToken = (data) => {
@@ -21,10 +22,19 @@ export const verify = (token) => {
 };
 
 export const isAuthorized = async (req, res, next) => {
-  if (!req.headers.authorization) return next(new Error('requestForbidden'));
-  let getToken = req.headers.authorization;
-  getToken = getToken.split(' ')[1];
-  const decoded : any = await verify(getToken);
-  req.requesterUserId = decoded['id'];
-  return next();
+  try {
+    if (!req.headers.authorization) {
+      return next(
+          // eslint-disable-next-line new-cap
+          createError.Forbidden('authorization token is required'));
+    }
+    let getToken = req.headers.authorization;
+    getToken = getToken.split(' ')[1];
+    const decoded : any = await verify(getToken);
+    req.requesterUserId = decoded['id'];
+    return next();
+  } catch (err) {
+    // eslint-disable-next-line new-cap
+    return next(createError.Forbidden(err.message));
+  }
 };

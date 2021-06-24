@@ -7,6 +7,7 @@ import addSubjectValidator from './validator/add-subject';
 import login from './handler/login';
 import {isAuthorized} from './handler/helper/jwt';
 import addSubject from './handler/add-subject';
+import errorResponse from './handler/helper/error-response';
 
 app.use(express.json());
 
@@ -16,16 +17,8 @@ app.get('/', (req, res) => {
 
 app.post('/api/v1/user', signUpValidator, signUp);
 app.post('/api/v1/user/login', loginValidator, login);
-app.post('/api/v1/subject', addSubjectValidator, isAuthorized, addSubject);
+app.post('/api/v1/subject', isAuthorized, addSubjectValidator, addSubject);
 
-app.use((err, req, res, next) => {
-  res.status(400).send({
-    error: {
-      status: 400,
-      name: err.name,
-      message: err.message,
-    },
-  });
-});
+app.use(errorResponse);
 
 export default app;
