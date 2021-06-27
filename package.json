@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon index.ts"
+    "start:dev": "nodemon index.ts",
+    "test:signup": "ts-mocha test/signup.test.ts"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "nodemon": "^2.0.7",
     "pg": "^8.6.0",
     "reflect-metadata": "^0.1.13",
+    "should": "^13.2.3",
     "ts-mocha": "^8.0.0",
     "ts-node": "^10.0.0",
     "typeorm": "^0.2.34",
@@ -32,6 +34,7 @@
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
     "eslint": "^7.28.0",
-    "eslint-config-google": "^0.14.0"
+    "eslint-config-google": "^0.14.0",
+    "mocha": "^9.0.1"
   }
 }
