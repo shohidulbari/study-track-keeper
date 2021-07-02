@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "ts-mocha test/*.test.ts",
     "start:dev": "nodemon index.ts",
-    "test:signup": "ts-mocha test/signup.test.ts"
+    "test:signup": "ts-mocha test/signup.test.ts",
+    "test:login": "ts-mocha test/login.test.ts",
+    "test:add-subject": "ts-mocha test/subject.test.ts"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
   "dependencies": {
     "@types/mocha": "^8.2.2",
     "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "http-errors": "^1.8.0",

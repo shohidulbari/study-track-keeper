@@ -10,8 +10,14 @@ const signUp = async (req, res, next) => {
     newUser.name = req.body.name;
     newUser.email = req.body.email;
     newUser.password = await bcrypt.hash(req.body.password, saltRounds);
-    await getRepository(User).save(newUser);
-    res.status(201).send();
+    const created = await getRepository(User).save(newUser);
+    res.status(201).send({
+      data: {
+        name: created.name,
+        email: created.email,
+        id: created.id,
+      },
+    });
   } catch (err) {
     // eslint-disable-next-line new-cap
     return next(createError.InternalServerError(err.message));

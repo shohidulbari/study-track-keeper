@@ -9,8 +9,10 @@ const addSubject = async (req, res, next) => {
     newSubject.name = req.body.name;
     newSubject.description = req.body.description;
     newSubject.user = req.requesterUserId;
-    await getRepository(Subject).save(newSubject);
-    res.status(201).send();
+    const created = await getRepository(Subject).save(newSubject);
+    res.status(201).send({
+      data: created,
+    });
   } catch (err) {
     // eslint-disable-next-line new-cap
     return next(createError.InternalServerError(err.message));

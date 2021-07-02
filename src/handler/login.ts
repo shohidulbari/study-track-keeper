@@ -19,7 +19,7 @@ const login = async (req, res, next) => {
         id: user.id,
       });
       // console.log(token);
-
+      res.cookie('authorization', `Bearer ${token}`);
       res.status(200).send({
         data: {
           jwtToken: token,

@@ -5,6 +5,7 @@ import {createConnection} from 'typeorm';
 import User from './src/entities/User';
 import app from './src/app';
 import Subject from './src/entities/Subject';
+import Topic from './src/entities/Topic';
 
 const server = http.createServer(app);
 
@@ -17,7 +18,7 @@ const server = http.createServer(app);
       username: 'stkdev',
       password: 'stkdev',
       database: 'stkdb',
-      entities: [User, Subject],
+      entities: [User, Subject, Topic],
       synchronize: true,
       logging: false,
     });

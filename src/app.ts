@@ -1,5 +1,8 @@
+/* eslint-disable max-len */
+/* eslint-disable require-jsdoc */
 const express = require('express');
 const app = express();
+const cookieParsar = require('cookie-parser');
 import signUpValidator from './validator/signup';
 import signUp from './handler/signup';
 import loginValidator from './validator/login';
@@ -10,6 +13,7 @@ import addSubject from './handler/add-subject';
 import errorResponse from './handler/helper/error-response';
 
 app.use(express.json());
+app.use(cookieParsar());
 
 app.get('/', (req, res) => {
   res.send('Hello World');

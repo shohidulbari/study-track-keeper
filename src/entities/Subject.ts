@@ -1,5 +1,7 @@
+/* eslint-disable max-len */
 /* eslint-disable new-cap */
-import {Entity, Column, PrimaryGeneratedColumn, ManyToOne} from 'typeorm';
+import {Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany} from 'typeorm';
+import Topic from './Topic';
 import User from './User';
 
 @Entity()
@@ -14,6 +16,9 @@ export default class Subject {
   @Column()
   description: string;
 
-  @ManyToOne(() => User, (user) => user.subjects)
+  @OneToMany(() => Topic, (topics) => topics.subject, {cascade: true})
+  topics: Topic[];
+
+  @ManyToOne(() => User, (user) => user.subjects, {onDelete: 'CASCADE'})
   user: User;
 };
