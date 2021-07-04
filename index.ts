@@ -6,6 +6,8 @@ import User from './src/entities/User';
 import app from './src/app';
 import Subject from './src/entities/Subject';
 import Topic from './src/entities/Topic';
+import Target from './src/entities/Target';
+import Log from './src/entities/Log';
 
 const server = http.createServer(app);
 
@@ -18,7 +20,7 @@ const server = http.createServer(app);
       username: 'stkdev',
       password: 'stkdev',
       database: 'stkdb',
-      entities: [User, Subject, Topic],
+      entities: [User, Subject, Topic, Target, Log],
       synchronize: true,
       logging: false,
     });

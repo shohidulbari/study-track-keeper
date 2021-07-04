@@ -1,14 +1,15 @@
+/* eslint-disable max-len */
 /* eslint-disable new-cap */
-import {Entity, Column, PrimaryGeneratedColumn, ManyToOne} from 'typeorm';
+import {Entity, Column, ManyToOne, OneToMany} from 'typeorm';
+import BaseEntity from './BaseEntity';
+import Log from './Log';
 import Subject from './Subject';
+import Target from './Target';
 import User from './User';
 
 @Entity()
 // eslint-disable-next-line require-jsdoc
-export default class Topic {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export default class Topic extends BaseEntity {
   @Column()
   name: string;
 
@@ -20,4 +21,10 @@ export default class Topic {
 
   @ManyToOne(() => User, (user) => user.topics, {onDelete: 'CASCADE'})
   user: User;
+
+  @OneToMany(() => Target, (target) => target.topic, {cascade: true})
+  targets: Target[];
+
+  @OneToMany(() => Log, (log) => log.topic, {cascade: true})
+  logs: Log[];
 };
