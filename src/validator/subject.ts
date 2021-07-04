@@ -7,7 +7,7 @@ const schema = Joi.object({
   description: Joi.string().required(),
 });
 
-const addSubjectValidator = async (req, res, next) => {
+export const addSubjectValidator = async (req, res, next) => {
   try {
     await schema.validateAsync(req.body);
     return next();
@@ -16,5 +16,3 @@ const addSubjectValidator = async (req, res, next) => {
     return next(createError.BadRequest(err.message));
   }
 };
-
-export default addSubjectValidator;
