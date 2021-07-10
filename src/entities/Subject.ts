@@ -2,8 +2,6 @@
 /* eslint-disable new-cap */
 import {Entity, Column, ManyToOne, OneToMany} from 'typeorm';
 import BaseEntity from './BaseEntity';
-import Log from './Log';
-import Target from './Target';
 import Topic from './Topic';
 import User from './User';
 
@@ -21,10 +19,4 @@ export default class Subject extends BaseEntity {
 
   @OneToMany(() => Topic, (topics) => topics.subject, {cascade: true})
   topics: Topic[];
-
-  @OneToMany(() => Target, (target) => target.subject, {cascade: true})
-  targets: Target[];
-
-  @OneToMany(() => Log, (log) => log.subject, {cascade: true})
-  logs: Log[];
 };

@@ -1,8 +1,6 @@
 /* eslint-disable new-cap */
 /* eslint-disable require-jsdoc */
 import {Column, Entity, ManyToOne} from 'typeorm';
-import Subject from './Subject';
-import Topic from './Topic';
 import User from './User';
 import {StudyTime} from './enum/StudyTime';
 import Target from './Target';
@@ -25,12 +23,6 @@ export default class Log extends BaseEntity {
 
   @ManyToOne(() => User, (user) => user.logs, {onDelete: 'CASCADE'})
   user: User;
-
-  @ManyToOne(() => Subject, (subject) => subject.logs, {onDelete: 'CASCADE'})
-  subject: Subject;
-
-  @ManyToOne(() => Topic, (topic) => topic.logs, {onDelete: 'CASCADE'})
-  topic: Topic;
 
   @ManyToOne(() => Target, (target) => target.logs, {onDelete: 'CASCADE'})
   target: Target;

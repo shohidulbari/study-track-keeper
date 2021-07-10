@@ -4,13 +4,11 @@ const createError = require('http-errors');
 
 export const addLog = async (req, res, next) => {
   try {
-    const {studyTime, time, note, subject, topic, target} = req.body;
+    const {studyTime, time, note, target} = req.body;
     const newLog = new Log();
     newLog.studyTime = studyTime;
     newLog.time = time;
     newLog.note = note;
-    newLog.subject = subject ? subject : null;
-    newLog.topic = topic;
     newLog.target = target ? target : null;
     const created = await getRepository(Log).save(newLog);
     return res.status(201).send({

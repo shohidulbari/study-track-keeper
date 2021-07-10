@@ -1,12 +1,13 @@
-import {getRepository} from 'typeorm';
-import User from '../entities/User';
+import {getCustomRepository} from 'typeorm';
 import bcrypt from 'bcrypt';
 import {jwtSignToken} from './helper/jwt';
+import {UserRepository} from '../repositories/user-repository';
 const createError = require('http-errors');
 
 const login = async (req, res, next) => {
   try {
-    const user = await getRepository(User).findOneOrFail({
+    const userRepository = getCustomRepository(UserRepository);
+    const user = await userRepository.findOneOrFail({
       email: req.body.email,
     });
     // console.log(user);

@@ -2,7 +2,6 @@
 /* eslint-disable require-jsdoc */
 import {Column, Entity, ManyToOne, OneToMany} from 'typeorm';
 import Log from './Log';
-import Subject from './Subject';
 import Topic from './Topic';
 import User from './User';
 import BaseEntity from './BaseEntity';
@@ -23,9 +22,6 @@ export default class Target extends BaseEntity {
 
   @ManyToOne(() => User, (user) => user.targets, {onDelete: 'CASCADE'})
   user: User;
-
-  @ManyToOne(() => Subject, (subject) => subject.targets, {onDelete: 'CASCADE'})
-  subject: Subject;
 
   @ManyToOne(() => Topic, (topic) => topic.targets, {onDelete: 'CASCADE'})
   topic: Topic;

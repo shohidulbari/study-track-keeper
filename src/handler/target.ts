@@ -14,7 +14,6 @@ export const addTarget = async (req, res, next) => {
     newTarget.time = time;
     newTarget.note = note;
     newTarget.user = req.requesterUserId;
-    newTarget.subject = subject ? subject : null;
     newTarget.topic = topic ? topic : null;
     const created = await getRepository(Target).save(newTarget);
     return res.status(201).send({
