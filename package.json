@@ -14,8 +14,7 @@
     "test:log": "ts-mocha test/log.test.ts",
     "test:lifecycle": "ts-mocha test/lifecycle.test.ts",
     "clean": "rimraf build/",
-    "copyfiles": "copyfiles -u 1 src/build/* build/src",
-    "build": "npm run clean && tsc && npm run copyfiles"
+    "build": "npm run clean && tsc"
   },
   "keywords": [],
   "author": "",
