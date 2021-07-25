@@ -5,11 +5,8 @@ const addLogSchema = Joi.object({
   studyTime: Joi.string().required(),
   time: Joi.number().min(15).max(3600).required(),
   note: Joi.string().max(1024).allow('', null),
-  subject: Joi.number().allow(null),
-  topic: Joi.number().required(),
-  target: Joi.number().allow(null),
+  target: Joi.number().required(),
 });
-
 
 export const addLogValidator = async (req, res, next) => {
   try {

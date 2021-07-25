@@ -6,8 +6,7 @@ const addTargetSchema = Joi.object({
   endDate: Joi.date().iso().required(),
   time: Joi.number().min(15).max(525600).required(),
   note: Joi.string().allow(null, ''),
-  subject: Joi.number().allow(null),
-  topic: Joi.number().allow(null),
+  topic: Joi.number().required(),
 });
 
 

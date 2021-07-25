@@ -5,7 +5,7 @@ import Log from '../entities/Log';
 
 @EntityRepository(Log)
 export class LogRepository extends Repository<Log> {
-  createTarget(log) {
+  createLog(log) {
     return this.save(log);
   }
 }
